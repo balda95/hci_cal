@@ -1,0 +1,250 @@
+body, h1, h2, h3, h4, h5, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+body{
+  background-color: #0a1c1e;
+}
+
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media (max-width: 640px){
+    .wrapper {
+      width: 400px;
+    }
+}
+
+@media (max-width: 445px){
+  .wrapper {
+    width: 250px;
+  }
+
+  #header .head-menu a {
+    padding: 0 10px;
+    font-size: 10px;
+}
+}
+
+
+/*    Header    */
+
+#header {
+    width: 100%;
+    height: 50px;
+    background-color: #00000059;
+    position: relative;
+}
+
+#header .head-menu{
+    text-align: center;
+    float: left;
+}
+
+#header .head-menu li {
+    text-align: center;
+    float: left;
+    height: 50px;
+    line-height: 50px;
+}
+
+#header .head-menu a {
+    color: #ffffff;
+    padding: 0 30px;
+    text-decoration-line: none;
+}
+
+
+/* Content */
+
+.content{
+  height: 100%;
+}
+/*    Calculator     */
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 0;
+}
+
+.cal_screen{
+    box-sizing: border-box;
+    max-width: 600px;
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #ffffff;*/
+}
+
+.total{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    margin: 0;
+    text-align: left;
+    opacity: 0.5;
+    overflow: hidden;
+    padding: 10px 0px 10px 50px;
+}
+
+.result {
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    padding: 15px 0 15px 0;
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    overflow: hidden;
+    border: 0;
+}
+
+.result_anim{
+  position: relative;
+  top: 0;
+  animation: movetext1 .2s 1;
+}
+
+@keyframes movetext1 {
+  0% {
+    top: 100px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.hints {
+    opacity: 0.3;
+}
+
+.keyboard{
+    /*max-width: 400px;*/
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top:50px;
+}
+
+.btn {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  margin: 5px 15px;
+  font-size: 20px;
+  background: rgb(10, 28, 30);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 6px 7px -6px rgba(255, 255, 255, 0.5);
+  transition: all 0.2s;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.btn:hover {
+  box-shadow: 10px 5px 18px -6px rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+}
+
+.btn:active {
+  box-shadow: inset 10px 10px 18px -6px rgba(255, 255, 255, 0.5);
+}
+
+.cal_num {
+  background-color: rgba(0, 0, 0, 0.17);
+}
+
+.c_btn{
+  background-color: rgba(255, 235, 59, 0.32);
+}
+
+.clrStl {
+  background-color: #5dabb321;
+}
+
+.wrap_board {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 50px;
+  margin: auto;
+}
+
+.wrap_board:last-child {
+  border-radius: 0px 0px 30px 30px;
+}
+
+.inv{
+  display: none;
+}
+
+/*  ToolTip  */
+.tooltip{
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+#graph{
+  border-color: #000000;
+	border-width: 4px;
+  display: block;
+  margin: 0 auto;
+}

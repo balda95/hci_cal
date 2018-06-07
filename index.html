@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.6.0/math.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <meta charset="utf-8">
+        <script src="js/script.js"></script>
+
+    </head>
+    <body>
+        <div id="header">
+            <div class="wrapper">
+                <ul class="head-menu">
+                    <li>
+                        <a href="index.html">일반 계산기</a>
+                    </li>
+                    <li>
+                        <a href="mode/engineerCal.html">공학 계산기</a>
+                    </li>
+                    <li>
+                        <a href="mode/graph.html">그래프</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="wrapper">
+                <div class="calculator">
+                    <div class="cal_screen">
+                        <div class="total"></div>
+                        <hr width="100%" style="margin: 0;">
+                        <div class="result"><span id="result_text" class="result_text result_anim"></span><span class="hints"></span></div>
+                    </div>
+                    <div class="keyboard">
+                        <div class="wrap_board">
+                            <div class="btn cal_fun tooltip" key1="sqrt("  title="Square root 
+                            ex) √(4) = 2">√</div>
+                            <div class="btn cal_op" key="^" char="^" title="Calculator Power ' ^ '
+                            ex) x ^ y
+                                math.pow(x,y)">^</div>
+                            <div class="btn cal_op" key="^2" char="²" title="Square 
+                            ex) 2² = 4">x²</div>
+                            <div class="btn cal_op" key="^3" char="³" title="Square 
+                            ex) 2³ = 8">x³</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_ac c_btn">AC</div>
+                            <div class="btn cal_back c_btn">CE</div>
+                            <div class="btn cal_op" key="!" char="!" title="Factorial 
+                            ex) 4! = 24">!</div>
+                            <div class="btn cal_op" key="+" char="+">+</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="7">7</div>
+                            <div class="btn cal_num" key="8">8</div>
+                            <div class="btn cal_num" key="9">9</div>
+                            <div class="btn cal_op" key="-" char="-">-</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="4">4</div>
+                            <div class="btn cal_num" key="5">5</div>
+                            <div class="btn cal_num" key="6">6</div>
+                            <div class="btn cal_op" key="*" char="*">*</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="1">1</div>
+                            <div class="btn cal_num" key="2">2</div>
+                            <div class="btn cal_num" key="3">3</div>
+                            <div class="btn cal_op" key="/" char="÷">÷</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="." style="width: 25%">.</div>
+                            <div class="btn cal_num" key="0" style="width: 25%">0</div>
+                            <div class="btn btnEq c_btn" style="width: 50%">=</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="footer"></div>
+        </div>
+    </body>
+</html>

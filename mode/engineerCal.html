@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="../css/style.css" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.6.0/math.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <meta charset="utf-8">
+        <script src="../js/math.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div class="wrapper">
+                <ul class="head-menu">
+                    <li>
+                        <a href="../index.html">일반 계산기</a>
+                    </li>
+                    <li>
+                        <a href="engineerCal.html">공학 계산기</a>
+                    </li>
+                    <li>
+                        <a href="graph.html">그래프</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="wrapper">
+                <div class="calculator">
+                    <div class="cal_screen">
+                        <div class="total"></div>
+                        <hr width="100%" style="margin: 0;">
+                        <!-- <div class="result"><span id="result_text" class="result_text result_anim"></span><span class="hints"></span></div> -->
+                    </div>
+                    <div class="keyboard">
+                        <div class="wrap_board">
+                            <div class="btn cal_fun tooltip" key1="sqrt("  title="Square root 
+                            ex) √(4) = 2">sqrt</div>
+                            <div class="btn cal_op" key="^" char="^" title="Calculator Power ' ^ '
+                            ex) x ^ y
+                                math.pow(x,y)">^</div>
+                            <div class="btn cal_op" key="^2" char="²" title="Square 
+                            ex) 2² = 4">x²</div>
+                            <div class="btn cal_op" key="^3" char="³" title="Square 
+                            ex) 2³ = 8">x³</div>
+                            <div class="btn cal_op clrStl" key="==" char="==">==</div>
+                            <div class="btn cal_op clrStl" key="!=" char="!=">!=</div>
+                            <div class="btn cal_op clrStl" key="<" char="<"><</div>
+                            <div class="btn cal_op clrStl" key=">" char=">">></div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_ac c_btn">AC</div>
+                            <div class="btn cal_back c_btn">=</div>
+                            <div class="btn cal_op" key="!" char="!" title="Factorial 
+                            ex) 4! = 24">!</div>
+                            <div class="btn cal_op" key="+" char="+">+</div>
+                            <div class="btn cal_op clrStl" key="<=" char="<="><=</div>
+                            <div class="btn cal_op clrStl" key=">=" char=">=">>=</div>
+                            <div class="btn cal_par clrStl" key="(">(</div>
+                            <div class="btn cal_par clrStl" key=")">)</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="7">7</div>
+                            <div class="btn cal_num" key="8">8</div>
+                            <div class="btn cal_num" key="9">9</div>
+                            <div class="btn cal_op" key="-" char="-">-</div>
+                            <div class="btn cal_op clrStl" key="[" char="[">[</div>
+                            <div class="btn cal_op clrStl" key="]" char="]">]</div>
+                            <div class="btn cal_num clrStl" key="pi">pi</div>
+                            <div class="btn cal_num clrStl" key="e" char="e">e</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="4">4</div>
+                            <div class="btn cal_num" key="5">5</div>
+                            <div class="btn cal_num" key="6">6</div>
+                            <div class="btn cal_op" key="*" char="*">*</div>
+                            
+                            <div class="btn cal_inv clrStl">Inv</div>
+                            <div class="btn cal_fun clrStl" key1="sin(" key2="asin(">sin</div>
+                            <div class="btn cal_fun clrStl" key1="cos(" key2="acos(">cos</div>
+                            <div class="btn cal_fun clrStl" key1="tan(" key2="atan(">tan</div> 
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key="1">1</div>
+                            <div class="btn cal_num" key="2">2</div>
+                            <div class="btn cal_num" key="3">3</div>
+                            <div class="btn cal_op" key="/" char="÷">÷</div>
+                            <div class="btn cal_fun clrStl" key1='log10('>log</div>
+                            <div class="btn cal_fun clrStl" key1='log('>ln</div>
+                            <div class="btn cal_op clrStl" key='E' char='E'>exp</div>
+                            <div class="btn cal_op clrStl" key='g'>g</div>
+                        </div>
+                        <div class="wrap_board">
+                            <div class="btn cal_num" key=".">.</div>
+                            <div class="btn cal_num" key="0">0</div>
+                            <div class="btn btnEq c_btn" style="width: 300%;">EV</div>
+                            <div class="btn cal_op clrStl" key="x" char="x">x</div>
+                            <div class="btn cal_op clrStl" key="y" char="y">y</div>
+                            <div class="btn cal_op clrStl" key="z" char="z">z</div>
+                            <div class="btn cal_op clrStl" key="f" char="f">f</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var parser = math.parser();
+    
+                var displayValue = '0';
+                $('.total').text(displayValue);
+     
+                $('.btn').each(function(index, key){       
+                    $(this).click(function(e){
+                        if(displayValue == '0') displayValue = '';
+    
+                        if($(this).text() == 'EV')
+                        {
+                            try
+                            {
+                                displayValue = parser.eval(displayValue).toString();
+                                var tokens = displayValue.split(' ');
+                                if(tokens[0] == 'function')
+                                {
+                                    displayValue = tokens[0];
+                                }
+                                $('.total').text(displayValue);                         
+                                displayValue = '0';
+                            }
+                            catch (e)
+                            {
+                                displayValue = '0';
+                                if(displayValue != 'function')
+                                {
+                                    $('.total').text(e);
+                                }
+                            }               
+                        }
+                        else
+                        {
+                            if($(this).text() == 'AC')
+                            {
+                                displayValue = '0';
+                                $('.total').text(displayValue);
+                            }
+                            else
+                            {                        
+                                displayValue += $(this).text();
+                                $('.total').text(displayValue);
+                            }
+                        }
+    
+                        e.preventDefault()
+                    })
+                })
+            })
+        </script>
+    </body>
+</html>
